@@ -1,9 +1,19 @@
 ﻿import model.*;
 
-component
+component extends="coldbox.system.Coldbox"
 {
-	this.name = "Todo Application - Basic";
+	this.name = "Todo Application - ColdBox";
 	this.datasource = "frameworks";
+	this.sessionManagement = true;
+
+	//COLDBOX STATIC PROPERTY, DO NOT CHANGE UNLESS THIS IS NOT THE ROOT OF YOUR COLDBOX APP
+	COLDBOX_APP_ROOT_PATH = getDirectoryFromPath(getCurrentTemplatePath());
+	//The web server mapping to this application. Used for remote purposes or static purposes
+	COLDBOX_APP_MAPPING   = "";
+	//COLDBOX PROPERTIES
+	COLDBOX_CONFIG_FILE   = "";
+	//COLDBOX APPLICATION KEY OVERRIDE
+	COLDBOX_APP_KEY       = "";
 
 	/**
      * Application start method
@@ -14,21 +24,23 @@ component
 
 		application.service = new TodoService(gateway);
 
+		return super.onApplicationStart();
+
     	return true;
     }
 
 	/**
      * request start function
      */
-    public boolean function onRequestStart()
+    public boolean function onRequestStart(required string targetPage)
     {
     	if(structKeyExists(url, "reload"))
     	{
     		applicationStop();
-    		location("/");
+    		location("/", false);
     		return false;
     	}
 
-    	return true;
+    	return super.onRequestStart(arguments.targetPage);
     }
 }
