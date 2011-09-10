@@ -31,7 +31,7 @@ component accessors="true"
      */
     public void function add(required any event)
     {
-		todo = new model.Todo();
+		var todo = new model.Todo();
 		todo.setMemento(arguments.event.getCollection());
 
 		getTodoService().saveTodo(todo);
@@ -48,7 +48,7 @@ component accessors="true"
 		ids = ListToArray(ids);
     	for(var id in ids)
     	{
-    		todo = getTodoService().getTodo(id);
+    		var todo = getTodoService().getTodo(id);
     		getTodoService().deleteTodo(todo);
     	}
 

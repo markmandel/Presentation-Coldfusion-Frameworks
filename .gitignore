@@ -2,4 +2,4 @@
 .*
 !.gitignore
 settings.xml
-results
+!coldbox/system/web/config/settings.xml
