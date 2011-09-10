@@ -29,7 +29,7 @@ component extends="MachII.framework.Listener" accessors="true"
     public void function saveTodo(required any event)
     {
 		todo = new Todo();
-		todo.setMemento(form);
+		todo.setMemento(arguments.event.getArgs());
 
 		getTodoService().saveTodo(todo);
     }
