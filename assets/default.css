@@ -1,0 +1,12 @@
+body
+{
+	font-family: Helvetica, Ariel, sans-serif;
+}
+
+
+form {
+	display: block;
+	width: 70%;
+	margin: 0px auto !important;
+}
+
