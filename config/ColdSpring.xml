@@ -5,7 +5,7 @@
 
 	<!-- Be sure to change these to false when you go to production! -->
 	<property name="reload"><value>false</value></property>
-	<property name="debug"><value>false</value></property>
+	<property name="debug"><value>true</value></property>
 	
 	<!-- Default event-handler -->
 	<property name="defaultEvent"><value>index</value></property>
