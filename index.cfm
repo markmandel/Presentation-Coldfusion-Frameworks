@@ -11,8 +11,16 @@
 	    		application.service.saveTodo(todo);
 			break;
 
-			case "done":
-				application.service.deleteTodo(todo);
+			case "delete":
+				if(structKeyExists(form, "delete_id"))
+				{
+					ids = listToArray(form.delete_id);
+					for(id in ids)
+					{
+						todo = application.service.getTodo(id);
+						application.service.deleteTodo(todo);
+					}
+				}
 			break;
 		}
     </cfscript>
@@ -106,7 +114,9 @@
 						}
                     </cfscript>
 
-					<uform:field name="delete_id"
+					<uform:field
+						name="delete_id"
+						id="delete_id_#todo.getID()#"
 						label="#label#"
 						type="checkbox"
 						value="#todo.getID()#"

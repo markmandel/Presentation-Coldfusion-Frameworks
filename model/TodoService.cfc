@@ -22,6 +22,16 @@
 	<cfreturn getGateway().listTodos() />
 </cffunction>
 
+<cffunction name="getTodo" hint="get an individual todo" access="public" returntype="Todo" output="false">
+	<cfargument name="id" hint="the todo id" type="numeric" required="Yes">
+	<cfreturn getGateway().getTodo(arguments.id) />
+</cffunction>
+
+<cffunction name="deleteTodo" hint="delete a todo object" access="public" returntype="void" output="false">
+	<cfargument name="todo" hint="the todo object" type="Todo" required="Yes">
+	<cfset getGateway().deleteTodo(arguments.todo)>
+</cffunction>
+
 <!------------------------------------------- PACKAGE ------------------------------------------->
 
 <!------------------------------------------- PRIVATE ------------------------------------------->
