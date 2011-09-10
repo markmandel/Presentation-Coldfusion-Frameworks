@@ -2,7 +2,7 @@
 
 component
 {
-	this.name = "Todo Application - Basic";
+	this.name = "Todo Application - Model Glue";
 	this.datasource = "frameworks";
 
 	/**

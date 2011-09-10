@@ -1,134 +1,78 @@
-﻿<cfif !structIsEmpty(form)>
-	<cfscript>
-		import model.*;
+<!---
+LICENSE INFORMATION:
 
-		switch(form.action)
-		{
-			case "create":
-	    		todo = new Todo();
-	    		todo.setMemento(form);
+Copyright 2011, Joe Rinehart, Dan Wilson
 
-	    		application.service.saveTodo(todo);
-			break;
+Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+use this file except in compliance with the License. 
 
-			case "delete":
-				if(structKeyExists(form, "delete_id"))
-				{
-					ids = listToArray(form.delete_id);
-					for(id in ids)
-					{
-						todo = application.service.getTodo(id);
-						application.service.deleteTodo(todo);
-					}
-				}
-			break;
-		}
-    </cfscript>
-</cfif>
+You may obtain a copy of the License at 
 
-<cfscript>
-	list = application.service.listTodos();
-</cfscript>
+	http://www.apache.org/licenses/LICENSE-2.0 
+	
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
+CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+specific language governing permissions and limitations under the License.
+
+VERSION INFORMATION:
+
+This file is part of Model-Glue 'Gesture' 3.2 RC1 (3.2.439).
+
+The version number in parentheses is in the format versionNumber.subversion.revisionNumber.
+
+If the version number appears as 'versionNumber' surrounded by @ symbols
+then this file is a working copy and not part of a release build.
+--->
 
 
-<cfimport taglib="/customtags/forms/cfUniForm" prefix="uform">
-<html>
-	<head>
-		<title>TO-DO Application - Basic</title>
+<cfsilent>
+<!---
+	If you want to run multiple MG applications under the same
+	application name, change this value to something unique
+	to this application to prevent them from colliding in the 
+	application scope.
+	
+	<cfset ModelGlue_APP_KEY = "mySubapplication" />
+--->
 
-		<link rel="stylesheet" type="text/css" href="/assets/default.css" />
-	</head>
-	<body>
+<!---
+	**CUSTOM APPLICATION CONFIGURATION**
+	
+  If your path to ColdSpring.xml is custom, change it here.  Otherwise,
+  it will default to Config/ColdSpring.xml
+	
+	<cfset ModelGlue_LOCAL_COLDSPRING_PATH = expandPath(".") & "/config/ColdSpring.xml" />
+--->
 
-		<uform:form action="#cgi.script_name#"
-			id="todo-add"
-			submitValue="Add Todo"
-			loadjQuery="true"
-			loadValidation="true"
-			loadDateUI="true"
-			loadRatingUI="true"
-			loadTextareaResize="true"
-			commonassetsPath="/assets/cfuniform/">
+<!---
+	**SCAFFOLDING CONFIGURATION**
+	
+  If your application uses custom scaffolding settings, change this to set the location
+	of your ScaffoldingConfiguration.xml file
+	
+	<cfset ModelGlue_SCAFFOLDING_CONFIGURATION_PATH = expandPath("/ModelGlue/unity/config/ScaffoldingConfiguration.xml") />
+--->
 
-			<input type="hidden" name="action" value="create">
+<!---
+	**CUSTOM CORE CONFIGURATION**
 
-			<h1>TO-DO Application - Basic</h1>
+  If your path to /modelglue/unity/config/Configuration.xml is custom, change it here.  Otherwise,
+  it will default to /modelglue/unity/config/Configuration.xml
 
-			<uform:fieldset legend="New To-Do">
-				<uform:field label="Title"
-							name="title"
-							isRequired="true"
-							type="text"
-							/>
+	<cfset ModelGlue_CORE_COLDSPRING_PATH = expandPath("/ModelGlue/unity/config/Configuration.xml") />
+--->
 
-				<uform:field label="Description"
-							name="description"
-							isRequired="true"
-							type="textarea"
-							/>
+<!---
+	**HIERARCHIAL BEAN FACTORY SUPPORT**
 
-				<uform:field label="Completion Date"
-							name="completionDate"
-							isRequired="false"
-							type="date"
-							/>
-
-				<uform:field label="Importance"
-							name="importance"
-							type="rating"
-							/>
-
-			</uform:fieldset>
+	If you'd like to designate a parent bean factory for the one that powers Model-Glue,
+	simply do whatever you need to do to set the following value to the parent bean factory 
+	instance:
+	
+	<cfset ModelGlue_PARENT_BEAN_FACTORY = ??? />
+--->
 
 
-		</uform:form>
-
-		<br/>
-
-		<uform:form action="#cgi.script_name#"
-			id="todo-delete"
-			submitValue="Delete Todo"
-			commonassetsPath="/assets/cfuniform/">
-
-			<input type="hidden" name="action" value="delete">
-
-			<uform:fieldset legend="Current To-Do's">
-
-				<cfloop array="#list#" index="todo">
-					<cfscript>
-						label = "<strong>#todo.getTitle()#</strong>";
-						class = "";
-						if(!isNull(todo.getCompletionDate()))
-						{
-							label &= ", Due: <strong>#DateFormat(todo.getCompletionDate(), 'medium')#</strong>";
-
-							if(todo.isOverdue())
-							{
-								class = "overdue";
-							}
-						}
-
-						if(!isNull(todo.getImportance()))
-						{
-							label &= " ( Importance: #todo.getImportance()# )";
-						}
-                    </cfscript>
-
-					<uform:field
-						name="delete_id"
-						id="delete_id_#todo.getID()#"
-						label="#label#"
-						type="checkbox"
-						value="#todo.getID()#"
-						hint="#todo.getDescription()#"
-						containerClass = "#class#"
-						/>
-
-				</cfloop>
-
-			</uform:fieldset>
-
-		</uform:form>
-
-	</body>
-</html>
+<!--- If your path to ModelGlue.cfm is different, you'll need to change this line. --->
+</cfsilent><cfinclude template="/ModelGlue/gesture/ModelGlue.cfm" />

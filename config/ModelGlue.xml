@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modelglue xsi:noNamespaceSchemaLocation="../ModelGlue/gesture/ModelGlue.xsd">
+
+<controllers>
+	<controller id="todo" type="controller.TodoController">
+		<message-listener message="listTodos" function="listTodos"/>
+		<message-listener message="addTodo" function="saveTodo"/>
+		<message-listener message="deleteTodo" function="deleteTodo"/>
+	</controller>
+</controllers>
+	
+<event-handlers>
+	<event-handler name="index">
+		<broadcasts>
+			<message name="listTodos"/>
+		</broadcasts>
+		<results>
+			<result do="template.main" />
+		</results>
+		<views>
+			<include name="body" template="pages/index.cfm" />
+		</views>
+	</event-handler>
+	
+	<event-handler name="addTodo">
+		<broadcasts>
+			<message name="addTodo"/>
+		</broadcasts>
+		<results>
+			<result do="index"/>
+		</results>
+	</event-handler>
+	
+	<event-handler name="deleteTodo">
+		<broadcasts>
+			<message name="deleteTodo"/>
+		</broadcasts>
+		<results>
+			<result do="index"/>
+		</results>
+	</event-handler>	
+	
+	<!-- Private events:  can't be accessed through a URL -->
+	<event-handler access="private" name="template.main">
+		<views>
+			<include name="main" template="templates/main.cfm" />
+		</views>
+	</event-handler>
+	
+</event-handlers>
+	
+</modelglue>
+

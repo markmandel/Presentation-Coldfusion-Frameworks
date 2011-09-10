@@ -1,0 +1,29 @@
+<beans>
+	
+<!-- This is your Model-Glue configuration -->
+<bean id="modelglue.modelGlueConfiguration" class="ModelGlue.gesture.configuration.ModelGlueConfiguration">
+
+	<!-- Be sure to change these to false when you go to production! -->
+	<property name="reload"><value>false</value></property>
+	<property name="debug"><value>false</value></property>
+	
+	<!-- Default event-handler -->
+	<property name="defaultEvent"><value>index</value></property>
+	
+	<!-- Controls reloading -->
+	<property name="reloadPassword"><value>true</value></property>
+	<property name="reloadKey"><value>init</value></property>
+
+	<!-- Where to find necessary files -->
+	<property name="configurationPath"><value>config/ModelGlue.xml</value></property>
+	<property name="applicationMapping"><value>/</value></property>
+	<property name="viewMappings"><value>/views</value></property>
+	<property name="helperMappings"><value>/helpers,/ModelGlue/helpers/cflib</value></property>
+	
+	<!-- See documentation or ModelGlueConfiguration.cfc for additional options. -->
+</bean>
+	
+<!-- Put definitions for your own beans and services here -->
+
+
+</beans>
