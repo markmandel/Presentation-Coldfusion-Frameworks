@@ -1,8 +1,8 @@
 ﻿import model.*;
 
-component
+component extends="MachII.mach-ii"
 {
-	this.name = "Todo Application - Basic";
+	this.name = "Todo Application - MacII";
 	this.datasource = "frameworks";
 
 	/**
@@ -14,13 +14,13 @@ component
 
 		application.service = new TodoService(gateway);
 
-    	return true;
+		return super.onApplicationStart();
     }
 
 	/**
      * request start function
      */
-    public boolean function onRequestStart()
+    public boolean function onRequestStart(required string targetPage)
     {
     	if(structKeyExists(url, "reload"))
     	{
@@ -28,6 +28,8 @@ component
     		location("/");
     		return false;
     	}
+
+    	super.onRequestStart(arguments.targetPage);
 
     	return true;
     }
