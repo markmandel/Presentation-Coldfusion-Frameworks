@@ -1,12 +1,17 @@
-body
-{
+body {
 	font-family: Helvetica, Ariel, sans-serif;
 }
-
 
 form {
 	display: block;
 	width: 70%;
 	margin: 0px auto !important;
+}
+
+.overdue {
+	background-color: #A8D230;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
