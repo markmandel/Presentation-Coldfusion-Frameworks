@@ -34,7 +34,7 @@ component extends="ModelGlue.gesture.controller.Controller" accessors="true"
      */
     public void function saveTodo(required any event)
     {
-		todo = new Todo();
+		var todo = new Todo();
 		todo.setMemento(arguments.event.getAllValues());
 
 		getTodoService().saveTodo(todo);
@@ -49,7 +49,7 @@ component extends="ModelGlue.gesture.controller.Controller" accessors="true"
 		ids = ListToArray(ids);
     	for(var id in ids)
     	{
-    		todo = getTodoService().getTodo(id);
+    		var todo = getTodoService().getTodo(id);
     		getTodoService().deleteTodo(todo);
     	}
     }
