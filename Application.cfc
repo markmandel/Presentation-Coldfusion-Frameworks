@@ -2,7 +2,7 @@
 
 component extends="MachII.mach-ii"
 {
-	this.name = "Todo Application - MacII";
+	this.name = "Todo Application - MachII";
 	this.datasource = "frameworks";
 
 	/**
