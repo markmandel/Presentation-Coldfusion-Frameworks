@@ -42,9 +42,10 @@ function configure()
 		defaultLayout = "Layout.Main.cfm"
 	};
 
-	ioc = {
-		framework="coldspring2",
-		definitionFile="config/coldspring.xml"
+	//WireBox Integration
+	wireBox =
+	{
+		enabled = true
 	};
 
 	interceptors =

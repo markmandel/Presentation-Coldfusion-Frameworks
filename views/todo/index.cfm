@@ -9,7 +9,7 @@
 	loadTextareaResize="true"
 	commonassetsPath="/assets/cfuniform/">
 
-	<h1>TO-DO Application - ColdBox - ColdSpring</h1>
+	<h1>TO-DO Application - ColdBox - Wirebox</h1>
 
 	<uform:fieldset legend="New To-Do">
 		<uform:field label="Title"

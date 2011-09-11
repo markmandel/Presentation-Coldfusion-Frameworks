@@ -5,7 +5,7 @@
  */
 component accessors="true"
 {
-	property name="todoService" inject="ioc:todoService";
+	property name="todoService" inject="model";
 
 	/**
      * Constructor

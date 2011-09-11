@@ -2,7 +2,7 @@
 
 component extends="coldbox.system.Coldbox"
 {
-	this.name = "Todo Application - ColdBox - ColdSpring";
+	this.name = "Todo Application - ColdBox - Wirebox";
 	this.datasource = "frameworks";
 	this.sessionManagement = true;
 
