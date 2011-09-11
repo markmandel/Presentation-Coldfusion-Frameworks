@@ -1,14 +1,17 @@
-﻿<cfif !structIsEmpty(form)>
-	<cfscript>
-		import model.*;
+﻿<cfscript>
+	import model.*;
 
+	service = application.coldspring.getBean("todoService");
+
+	if(!structIsEmpty(form))
+	{
 		switch(form.action)
 		{
 			case "create":
 	    		todo = new Todo();
 	    		todo.setMemento(form);
 
-	    		application.service.saveTodo(todo);
+	    		service.saveTodo(todo);
 			break;
 
 			case "delete":
@@ -17,19 +20,16 @@
 					ids = listToArray(form.delete_id);
 					for(id in ids)
 					{
-						todo = application.service.getTodo(id);
-						application.service.deleteTodo(todo);
+						todo = service.getTodo(id);
+						service.deleteTodo(todo);
 					}
 				}
 			break;
 		}
-    </cfscript>
-</cfif>
+	}
 
-<cfscript>
-	list = application.service.listTodos();
+	list = service.listTodos();
 </cfscript>
-
 
 <cfimport taglib="/customtags/forms/cfUniForm" prefix="uform">
 <html>

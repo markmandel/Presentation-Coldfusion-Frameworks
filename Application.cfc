@@ -1,4 +1,5 @@
 ﻿import model.*;
+import coldspring.beans.xml.XmlBeanFactory;
 
 component
 {
@@ -10,9 +11,7 @@ component
      */
     public boolean function onApplicationStart()
     {
-		var gateway = new TodoGateway();
-
-		application.service = new TodoService(gateway);
+		application.coldspring = new XmlBeanFactory(expandPath("/config/coldspring.xml"));
 
     	return true;
     }
