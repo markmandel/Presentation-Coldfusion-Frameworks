@@ -2,7 +2,7 @@
 
 component extends="coldbox.system.Coldbox"
 {
-	this.name = "Todo Application - ColdBox";
+	this.name = "Todo Application - ColdBox - ColdSpring";
 	this.datasource = "frameworks";
 	this.sessionManagement = true;
 
@@ -20,13 +20,7 @@ component extends="coldbox.system.Coldbox"
      */
     public boolean function onApplicationStart()
     {
-		var gateway = new TodoGateway();
-
-		application.service = new TodoService(gateway);
-
 		return super.onApplicationStart();
-
-    	return true;
     }
 
 	/**

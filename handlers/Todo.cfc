@@ -5,14 +5,13 @@
  */
 component accessors="true"
 {
-	property name="todoService";
+	property name="todoService" inject="ioc:todoService";
 
 	/**
      * Constructor
      */
     public Todo function init()
     {
-    	setTodoService(application.service);
     	return this;
     }
 

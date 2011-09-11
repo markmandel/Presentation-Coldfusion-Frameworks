@@ -1,10 +1,12 @@
 <cfcomponent output="false" hint="My App Configuration">
 <cfscript>
 // Configure ColdBox Application
-function configure(){
+function configure()
+{
 
 	// coldbox directives
-	coldbox = {
+	coldbox =
+	{
 		//Application Setup
 		appName 				= "TODO",
 
@@ -39,6 +41,20 @@ function configure(){
 	layoutSettings = {
 		defaultLayout = "Layout.Main.cfm"
 	};
+
+	ioc = {
+		framework="coldspring2",
+		definitionFile="config/coldspring.xml"
+	};
+
+	interceptors =
+	[
+		//Autowire, without which, we wouldn't autowire
+		{
+			class="coldbox.system.interceptors.Autowire",
+		 	properties={useSetterInjection=false}
+		}
+	];
 }
 
 </cfscript>
