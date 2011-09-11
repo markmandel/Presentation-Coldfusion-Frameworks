@@ -34,7 +34,7 @@
 <cfimport taglib="/customtags/forms/cfUniForm" prefix="uform">
 <html>
 	<head>
-		<title>TO-DO Application - Basic</title>
+		<title>TO-DO Application - ColdSpring</title>
 
 		<link rel="stylesheet" type="text/css" href="/assets/default.css" />
 	</head>
@@ -52,7 +52,7 @@
 
 			<input type="hidden" name="action" value="create">
 
-			<h1>TO-DO Application - Basic</h1>
+			<h1>TO-DO Application - ColdSpring</h1>
 
 			<uform:fieldset legend="New To-Do">
 				<uform:field label="Title"
