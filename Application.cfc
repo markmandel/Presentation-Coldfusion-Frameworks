@@ -2,7 +2,7 @@
 
 component extends="coldbox.system.Coldbox"
 {
-	this.name = "Todo Application - ColdBox - ColdSpring";
+	this.name = "Todo Application - ColdBox - ColdSpring - ORM";
 	this.datasource = "frameworks";
 	this.sessionManagement = true;
 
@@ -14,6 +14,13 @@ component extends="coldbox.system.Coldbox"
 	COLDBOX_CONFIG_FILE   = "";
 	//COLDBOX APPLICATION KEY OVERRIDE
 	COLDBOX_APP_KEY       = "";
+
+	//enable orm, and set it up
+	this.ormEnabled = true;
+	this.ormSettings.autoManageSession = false;
+	this.ormSettings.cfclocation = "model";
+	this.ormSettings.flushatrequestend = false;
+	this.ormSettings.useDBForMapping = false;
 
 	/**
      * Application start method

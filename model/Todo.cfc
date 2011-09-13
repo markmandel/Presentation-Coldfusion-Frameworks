@@ -1,32 +1,32 @@
 ﻿/**
  * I am a Todo!
  */
-component accessors="true"
+component persistent="true"
 {
 	/**
      *  Primary Key
      */
-	property name="id" type="numeric";
+	property name="id" type="numeric" fieldtype="id" generator="native";
 
 	/**
      * The title of the todo.
      */
-	property name="title" type="string";
+	property name="title" type="string" length="1000" ;
 
 	/**
      * todo description
      */
-	property name="description" type="string";
+	property name="description" type="string" ormtype="text";
 
 	/**
      * completion date
      */
-	property name="completionDate" type="date";
+	property name="completionDate" type="date" ormtype="date";
 
 	/**
      * important level
      */
-	property name="importance" type="numeric";
+	property name="importance" type="numeric" ormtype="int";
 
 	/**
      * Constructor

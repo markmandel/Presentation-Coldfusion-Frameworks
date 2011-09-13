@@ -15,7 +15,9 @@
 
 <cffunction name="saveTodo" hint="save a todo object" access="public" returntype="void" output="false">
 	<cfargument name="todo" hint="the todo object" type="Todo" required="Yes">
-	<cfset getGateway().saveTodo(arguments.todo)>
+	<cftransaction>
+		<cfset getGateway().saveTodo(arguments.todo)>
+	</cftransaction>
 </cffunction>
 
 <cffunction name="listTodos" hint="list all todos" access="public" returntype="array" output="false">
@@ -29,7 +31,9 @@
 
 <cffunction name="deleteTodo" hint="delete a todo object" access="public" returntype="void" output="false">
 	<cfargument name="todo" hint="the todo object" type="Todo" required="Yes">
-	<cfset getGateway().deleteTodo(arguments.todo)>
+	<cftransaction>
+		<cfset getGateway().deleteTodo(arguments.todo)>
+	</cftransaction>
 </cffunction>
 
 <!------------------------------------------- PACKAGE ------------------------------------------->
